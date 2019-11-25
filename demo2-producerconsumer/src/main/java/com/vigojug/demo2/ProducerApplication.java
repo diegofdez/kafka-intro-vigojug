@@ -27,13 +27,13 @@ public class ProducerApplication {
 		
 		KafkaProducer<String, String> producer = new KafkaProducer<>(kafkaProps);
 		
-		ProducerRecord<String, String> record = new ProducerRecord<String, String>(TOPIC, "host", Long.toString(System.currentTimeMillis()));
+		ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC, "host", Long.toString(System.currentTimeMillis()));
 		
 		try {
 			RecordMetadata metadata = producer.send(record).get();
 			log.info("Got metadata: partition={}, offset={}", metadata.partition(), metadata.offset());
 		} catch (Exception e) {
-			log.error("Got exception publishing yo topic ");
+			log.error("Got exception publishing to topic ");
 		} finally {
 			producer.close();
 		}

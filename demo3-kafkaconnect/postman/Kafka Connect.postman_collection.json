@@ -26,6 +26,25 @@
 			"response": []
 		},
 		{
+			"name": "List connector plugins",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/connector-plugins",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"connector-plugins"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Create source connector",
 			"request": {
 				"method": "POST",
@@ -39,12 +58,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"load-kafka-vigojug\",\r\n    \"config\": {\r\n        \"connector.class\": \"FileStreamSource\",\r\n        \"file\": \"demo/VigoJUG.txt\",\r\n        \"topic\": \"vigojug-demo3\"\r\n    }\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"raw": "{\r\n    \"name\": \"load-kafka-vigojug\",\r\n    \"config\": {\r\n        \"connector.class\": \"FileStreamSource\",\r\n        \"file\": \"demo/VigoJUG.txt\",\r\n        \"topic\": \"vigojug-demo3\"\r\n    }\r\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8083/connectors",
@@ -74,12 +88,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"dump-kafka-vigojug\",\r\n    \"config\": {\r\n        \"connector.class\": \"FileStreamSink\",\r\n        \"file\": \"demo/VigoJUG-out.txt\",\r\n        \"topics\": \"vigojug-demo3\"\r\n    }\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"raw": "{\r\n    \"name\": \"dump-kafka-vigojug\",\r\n    \"config\": {\r\n        \"connector.class\": \"FileStreamSink\",\r\n        \"file\": \"demo/VigoJUG-out.txt\",\r\n        \"topics\": \"vigojug-demo3\"\r\n    }\r\n}\r\n"
 				},
 				"url": {
 					"raw": "http://localhost:8083/connectors",

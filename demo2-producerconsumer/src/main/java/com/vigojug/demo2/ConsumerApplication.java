@@ -35,7 +35,7 @@ public class ConsumerApplication {
 		
 		try {
 			while (true) {
-			    ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
+			    ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(1000));
 			    log.info("Got {} messages from poll", records.count());
 			    for (ConsumerRecord<String, String> record : records) {
 			      log.info("Got message: key={}, value={}", record.key(), record.value());

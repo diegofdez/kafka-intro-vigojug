@@ -33,12 +33,14 @@ public class StreamsApplication {
 				.map((k, v) -> toUpperCase(k, v));
 		result.to("vigojugstream-output-topic");
 		
-		KafkaStreams streams = new KafkaStreams(builder.build(), kafkaProps);
-		streams.start();
-		log.info("Stream running");
-		Thread.sleep(60000);
-		log.info("Finish stream");
-		streams.close();
+		try (KafkaStreams streams = new KafkaStreams(builder.build(), kafkaProps)) {
+			streams.start();
+			log.info("Stream running");
+			Thread.sleep(60000);
+		} catch (Exception e) {
+			log.error("Got exception", e);
+		}
+		
 	}
 	
 	private static KeyValue<String, String> toUpperCase(String key, String value) {
